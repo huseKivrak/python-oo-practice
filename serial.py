@@ -18,18 +18,18 @@ class SerialGenerator:
     100
     """
     def __init__(self, start):
+        """ Creates instance of SerialGenerator from start, sets call status
+         to False, stores start value for reset """
         self.start = start
-        self.ser_num = start
-        self.has_been_called = False
+        self.incr_num = start - 1
+
 
     def generate(self):
-        if self.has_been_called:
-            self.ser_num + 1
-            return self.ser_num
-        else:
-            self.has_been_called = True
-            return self.start
-
+        """If hasn't been called, returns start value. Otherwise, returns
+        sequential value """
+        self.incr_num = self.incr_num + 1
+        return self.incr_num
 
     def reset(self):
-        self.ser_num = self.start
+        """ Reassigns initial value and toggles call status """
+        self.incr_num = self.start - 1
