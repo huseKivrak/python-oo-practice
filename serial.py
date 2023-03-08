@@ -33,3 +33,5 @@ class SerialGenerator:
     def reset(self):
         """ Reassigns initial value and toggles call status """
         self.incr_num = self.start - 1
+
+
