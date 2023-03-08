@@ -14,10 +14,26 @@ class WordFinder:
 
 
     def words_read(self):
-        return [word for word in self.file]
+        return [word[:-1] for word in self.file]
 
     def len_of_words_read(self):
         return len(self.words)
 
     def random(self):
-        return choice(self.words)[2:-1]
+        return choice(self.words)
+
+
+class SpecialWordFinder(WordFinder):
+
+    def __init__(self, path):
+        super().__init__(path)
+        self.real_words = self.get_words()
+
+
+    def get_words(self):
+        reals = []
+        for line in self.words:
+            if not line.startswith('#') and line != "":
+                reals.append(line)
+
+        return reals
